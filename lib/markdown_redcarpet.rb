@@ -10,7 +10,7 @@ module Redmine
       def block_code(code, language)
         if language != nil
           "<pre><code class='#{language} syntaxhl'>" \
-          + Redmine::SyntaxHighlighting.highlight_by_language(code, language) \
+          + Redmine::SyntaxHighlighting.highlight_by_language(code.force_encoding("UTF-8"), language) \
           + "</code></pre>"
         else
           "<pre>" + CGI.escapeHTML(code) + "</pre>"
